@@ -16,6 +16,10 @@
     <%= f.text_area :description %>
   </p>
   <p>
+    <%= f.label :genre %><br />
+    <%= f.select :genre_id, genre_select_options  %>
+  </p>
+  <p>
     <%= f.label :imdb_link %><br />
     <%= f.text_field :imdb_link %>
   </p>

@@ -1,4 +1,4 @@
-<h1>Editing movie</h1>
+<h1>Edit Movie</h1>
 
 <% form_for(@movie) do |f| %>
   <%= f.error_messages %>
@@ -16,6 +16,10 @@
     <%= f.text_area :description %>
   </p>
   <p>
+    <%= f.label :genre %><br />
+    <%= f.select :genre_id,  genre_select_options %>
+  </p>
+ <p>
     <%= f.label :imdb_link %><br />
     <%= f.text_field :imdb_link %>
   </p>
