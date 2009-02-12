@@ -1,5 +1,13 @@
 <h1>Movie Listing</h1>
 
+
+<% form_tag(search_path, :method => "get") do   %>
+  <%= label_tag(:query, "Search:") %>
+  <%= text_field_tag(:query) %>
+  <%= submit_tag("Search")  %>
+ <% end %>
+
+
 <table>
   <tr>
     <th>Title</th>

@@ -3,6 +3,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :movies
 
+  map.search "search", :controller => "movies", :action => "search_movies"
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

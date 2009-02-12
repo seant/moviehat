@@ -2,10 +2,21 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.xml
   def index
+    puts "this is the index def"
     @movies = Movie.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
+      format.xml  { render :xml => @movies }
+    end
+  end
+  
+  def search_movies
+    puts "this is the search movies method"
+    @movies = Movie.find_by_search_text(params["query"])
+
+    respond_to do |format|
+      format.html { render :action => 'index'}
       format.xml  { render :xml => @movies }
     end
   end
