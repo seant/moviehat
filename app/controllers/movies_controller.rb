@@ -2,7 +2,6 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.xml
   def index
-    puts "this is the index def"
     @movies = Movie.find(:all)
 
     respond_to do |format|
@@ -12,7 +11,6 @@ class MoviesController < ApplicationController
   end
   
   def search_movies
-    puts "this is the search movies method"
     @movies = Movie.find_by_search_text(params["query"])
 
     respond_to do |format|
