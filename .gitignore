@@ -27,4 +27,5 @@ vendor/plugins/selenium-on-rails/log/*
 public/javascripts/home.js
 public/directory_entry_thumbs/*
 thumbs.db
+public/images/Thumbs.db
 nbproject

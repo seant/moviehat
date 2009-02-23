@@ -11,9 +11,22 @@
 
 <p style="color: red"><%= flash[:notice] %></p>
 
-WELCOME TO MOVIEHAT, BITCHES!
+<strong>WELCOME TO MOVIEHAT, BITCHES!</strong>
+<br>
+<%= image_tag("/images/moviehat.jpg") %>
 
-<br /><%= link_to("Movie List", :controller => :movies, :action => :index)  %>
+
+<!-- navigation links -->
+<br />
+<%= link_to("Add new movie", :controller => :movies, :action => :new)  %> |
+  <%= link_to("Genre List", :controller => :genres, :action => :index)  %> |
+  <%= link_to("Movie List", :controller => :movies, :action => :index)  %>
+
+<!-- short lists -->
+<hr />
+<%= render :partial => 'movies/top_movies' -%>
+<hr />
+<%= render :partial => 'genres/top_genres' -%>
 
 </body>
 </html>
