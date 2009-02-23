@@ -1,0 +1,37 @@
+<%
+# Prepare thyself, dates, thou art about to be picked.
+# Include this partial if you want to use the javascript popup calendar for
+# choosing dates.
+# 
+# REQUIRED LOCALS:
+# css_class => the css class name corresponding to the CSS class on your
+#              text field that will hold the date once the date is picked.
+#
+# [[REFACTOR]]
+# Pass in the date format string so we can be more flexible about it? 
+%>
+<%
+puts "DBG: css_class=#{css_class}"
+%>
+  <!-- jQuery -->
+  <script type="text/javascript" src="/javascripts/jquery-1.3.2.js"></script>
+
+  <!-- required plugins -->
+  <script type="text/javascript" src="/javascripts/date.js"></script>
+  <!--[if IE]><script type="text/javascript" src="scripts/jquery.bgiframe.min.js"></script><![endif]-->
+
+  <!-- jquery.datePicker.js -->
+  <script type="text/javascript" src="/javascripts/jquery.datePicker.js"></script>
+
+  <!-- datePicker required styles -->
+  <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/datePicker.css">
+
+  <!-- page specific scripts -->
+  <script type="text/javascript" charset="utf-8">
+      Date.firstDayOfWeek = 7;
+      Date.format = 'mm/dd/yyyy';
+      $(function()
+      {
+			$(<%="'.#{css_class}'"-%>).datePicker({startDate:'01/01/1900'});
+      });
+  </script>
