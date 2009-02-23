@@ -1,5 +1,6 @@
 class Movie < ActiveRecord::Base
   belongs_to :genre
+  acts_as_rated
 
   def genre_name
 
