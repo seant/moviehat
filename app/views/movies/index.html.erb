@@ -7,9 +7,12 @@
   <%= submit_tag("Search")  %>
  <% end %>
 
+<script type="text/Javascript">
 
+  </script>
 <table>
   <tr>
+    <th>Rating</th>
     <th>Title</th>
     <th>Release date</th>
     <th>Description</th>
@@ -18,16 +21,21 @@
   </tr>
 
 <% for movie in @movies %>
-  <tr>
-    <td><%=h movie.title %></td>
-    <td><%=h movie.release_date %></td>
-    <td><%=h movie.description %></td>
-    <td><%=h movie.genre_name %></td>
-    <td><%=h movie.imdb_link %></td>
-    <td><%= link_to 'Show', movie %></td>
-    <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-    <td><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  
+    <tr>
+      <% form_for(movie) do |f| %>
+      <td><%=f.select :rating_for_user, rating_select_options, {}, {:class => 'submit'} %></td>
+      <% end %>
+      <td><%=h movie.title %></td>
+      <td><%=h movie.release_date %></td>
+      <td><%=h movie.description %></td>
+      <td><%=h movie.genre_name %></td>
+      <td><%=h movie.imdb_link %></td>
+      <td><%= link_to 'Show', movie %></td>
+      <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
+      <td><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+
 <% end %>
 </table>
 
