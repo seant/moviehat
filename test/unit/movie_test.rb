@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class MovieTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
 
   def setup
     @movie1 = Movie.new(:title=>'aaaaaaa', :description=>'saasdfasdfas')
@@ -33,5 +32,8 @@ class MovieTest < ActiveSupport::TestCase
     @movie2.rate 4, @user2
     assert_equal 3.5, @movie2.rating_average
 
+    movies = Movie.sorted_by_rating
+    assert_equal @movie2, movies[0], "Movies not sorted correctly"
+    assert_equal @movie1, movies[1], "Movies not sorted correctly"
   end
 end
