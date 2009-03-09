@@ -21,10 +21,20 @@ class Movie < ActiveRecord::Base
   
   def self.find_by_search_text(text)
     return find(:all, :conditions => ["title like ? or description like ?", like(text), like(text)])
+  end
 
+  def self.sorted_by_rating
+    all = find(:all)
+    all.sort! { |a,b|
+      -1 if a.rating_average.nil?
+      1 if b.rating_average.nil?
+      b.rating_average <=> a.rating_average
+      }
+    all
   end
 
   private
+
   def self.like(str)
     return "%#{str}%"
   end
