@@ -6,6 +6,13 @@ class UserTest < ActiveSupport::TestCase
   include AuthenticatedTestHelper
   fixtures :users
 
+  def setup
+    @user1 = User.new(:login=>'dean1',:email=>'dean1@dean.com',:password=>'Ein-lassen!',:password_confirmation=>'Ein-lassen!', :state=>'active')
+    @user1.register!
+    @user1.activate!
+    @user1.save!
+  end
+
   def test_should_create_user
     assert_difference 'User.count' do
       user = create_user
@@ -60,12 +67,14 @@ class UserTest < ActiveSupport::TestCase
   end
 
   def test_should_not_rehash_password
-    users(:quentin).update_attributes(:login => 'quentin2')
-    assert_equal users(:quentin), User.authenticate('quentin2', 'monkey')
+    #users(:quentin).update_attributes(:login => 'quentin2')
+    #assert_equal users(:quentin), User.authenticate('quentin2', 'monkey')
+    @user1.update_attributes(:login => 'Becca')
+    assert_equal @user1, User.authenticate(@user1.login, @user1.password)
   end
 
   def test_should_authenticate_user
-    assert_equal users(:quentin), User.authenticate('quentin', 'monkey')
+    assert_equal @user1, User.authenticate(@user1.login, @user1.password)
   end
 
   def test_should_set_remember_token

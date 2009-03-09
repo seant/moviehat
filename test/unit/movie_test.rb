@@ -31,7 +31,8 @@ class MovieTest < ActiveSupport::TestCase
 
     @movie2.rate 3, @user1
     @movie2.rate 4, @user2
-    assert_equal 3.5, @movie2.rating_average
+    rating = BigDecimal.new("3.5")
+    assert_equal rating, @movie2.rating_average
 
   end
 end
